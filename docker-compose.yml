@@ -32,6 +32,7 @@ services:
     container_name: cadvisor
     networks:
       - monitoring
+    command: [ "-housekeeping_interval=5s", "-docker_only" ]
     volumes:
       - /:/rootfs:ro
       - /sys:/sys:ro
