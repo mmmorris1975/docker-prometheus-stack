@@ -89,8 +89,9 @@ scrape_configs:
 
   - job_name: 'blackbox_http'
     scrape_interval: 6s
-    static_configs:
-      - targets: ['www.google.com']
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/file_sd/http.yml
     metrics_path: /probe
     params:
       module: ['http_2xx']
