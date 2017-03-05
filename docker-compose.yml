@@ -1,0 +1,117 @@
+version: "3"
+
+volumes:
+  prometheus-data:
+    driver: local
+  grafana-data:
+    driver: local
+  grafana-logs:
+    driver: local
+
+networks:
+  monitoring:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.31.0.0/24
+
+services:
+  pushgateway:
+    image: armhf-prometheus-pushgateway:latest
+    container_name: pushgateway
+    networks:
+      - monitoring
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9091/metrics']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  cadvisor:
+    image: armhf-cadvisor:latest
+    container_name: cadvisor
+    networks:
+      - monitoring
+    volumes:
+      - /:/rootfs:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /var/run:/var/run:rw
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:8080/metrics']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  blackbox_exporter:
+    image: armhf-prometheus-blackbox_exporter:latest
+    container_name: blackbox_exporter
+    networks:
+      - monitoring
+    cap_add:
+      - NET_RAW
+    volumes:
+      - ./prometheus/blackbox_exporter_config.yml:/etc/blackbox_exporter/config.yml:ro
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9115/metrics']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  snmp_exporter:
+    image: armhf-prometheus-snmp_exporter:latest
+    container_name: snmp_exporter
+    networks:
+      - monitoring
+    volumes:
+      - ./prometheus/snmp_exporter_config.yml:/etc/snmp_exporter/config.yml:ro
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9116/metrics']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  prometheus_server:
+    image: armhf-prometheus-server:latest
+    container_name: prometheus
+    networks:
+      - monitoring
+    command: [
+               "-config.file=/etc/prometheus/prometheus.yml",
+               "-storage.local.path=/prometheus",
+               "-web.external-url=http://localhost:9090/prometheus/",
+               "-web.console.libraries=/usr/share/prometheus/console_libraries",
+               "-web.console.templates=/usr/share/prometheus/consoles"
+             ]
+    volumes:
+      - prometheus-data:/prometheus:rw
+      - ./prometheus/prometheus-server.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/file_sd/:/etc/prometheus/file_sd/:ro
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9090/prometheus/graph']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  nginx:
+    image: armhf-nginx
+    container_name: nginx
+    networks:
+      - monitoring
+    volumes:
+      - ./nginx/default.d/:/etc/nginx/default.d/:ro
+      - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
+      - ./nginx/htpasswd:/htpasswd:ro
+      - ./nginx/server.key:/server.key:ro
+      - ./nginx/server.crt:/server.crt:ro
+    ports: ['80:80', '443:443']
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost/']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  grafana:
+    image: fg2it/grafana-armhf:v4.1.2
+    container_name: grafana
+    networks:
+      - monitoring
+    volumes:
+      - grafana-data:/var/lib/grafana:rw
+      - grafana-logs:/var/log/grafana:rw
+      - ./grafana/:/etc/grafana/:rw

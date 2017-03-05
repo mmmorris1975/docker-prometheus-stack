@@ -1,0 +1,3 @@
+nginx/htpasswd
+nginx/server.*
+prometheus/file_sd/*

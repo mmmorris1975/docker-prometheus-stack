@@ -1,0 +1,3868 @@
+default:
+  walk:
+  - 1.3.6.1.2.1.1.3
+  - 1.3.6.1.2.1.2
+  - 1.3.6.1.2.1.25.1
+  - 1.3.6.1.2.1.25.2
+  - 1.3.6.1.2.1.25.3
+  - 1.3.6.1.2.1.31.1.1
+  - 1.3.6.1.4.1.2021.10
+  - 1.3.6.1.4.1.2021.11
+  - 1.3.6.1.4.1.2021.13
+  - 1.3.6.1.4.1.2021.4
+  - 1.3.6.1.4.1.2021.9
+  metrics:
+  - name: sysUpTime
+    oid: 1.3.6.1.2.1.1.3
+    type: gauge
+  - name: ifNumber
+    oid: 1.3.6.1.2.1.2.1
+    type: gauge
+  - name: ifIndex
+    oid: 1.3.6.1.2.1.2.2.1.1
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifDescr
+    oid: 1.3.6.1.2.1.2.2.1.2
+    type: string
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifType
+    oid: 1.3.6.1.2.1.2.2.1.3
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifMtu
+    oid: 1.3.6.1.2.1.2.2.1.4
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifSpeed
+    oid: 1.3.6.1.2.1.2.2.1.5
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifAdminStatus
+    oid: 1.3.6.1.2.1.2.2.1.7
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOperStatus
+    oid: 1.3.6.1.2.1.2.2.1.8
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifLastChange
+    oid: 1.3.6.1.2.1.2.2.1.9
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInOctets
+    oid: 1.3.6.1.2.1.2.2.1.10
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.11
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.12
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInDiscards
+    oid: 1.3.6.1.2.1.2.2.1.13
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInErrors
+    oid: 1.3.6.1.2.1.2.2.1.14
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInUnknownProtos
+    oid: 1.3.6.1.2.1.2.2.1.15
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutOctets
+    oid: 1.3.6.1.2.1.2.2.1.16
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.17
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.18
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutDiscards
+    oid: 1.3.6.1.2.1.2.2.1.19
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutErrors
+    oid: 1.3.6.1.2.1.2.2.1.20
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutQLen
+    oid: 1.3.6.1.2.1.2.2.1.21
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: hrSystemUptime
+    oid: 1.3.6.1.2.1.25.1.1
+    type: gauge
+#  - name: hrSystemDate
+#    oid: 1.3.6.1.2.1.25.1.2
+#    type: string
+  - name: hrSystemInitialLoadDevice
+    oid: 1.3.6.1.2.1.25.1.3
+    type: gauge
+  - name: hrSystemInitialLoadParameters
+    oid: 1.3.6.1.2.1.25.1.4
+    type: string
+  - name: hrSystemNumUsers
+    oid: 1.3.6.1.2.1.25.1.5
+    type: gauge
+  - name: hrSystemProcesses
+    oid: 1.3.6.1.2.1.25.1.6
+    type: gauge
+  - name: hrSystemMaxProcesses
+    oid: 1.3.6.1.2.1.25.1.7
+    type: gauge
+  - name: hrMemorySize
+    oid: 1.3.6.1.2.1.25.2.2
+    type: gauge
+  - name: hrStorageIndex
+    oid: 1.3.6.1.2.1.25.2.3.1.1
+    type: gauge
+    indexes:
+    - labelname: hrStorageDescr
+      type: Integer
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+  - name: hrStorageDescr
+    oid: 1.3.6.1.2.1.25.2.3.1.3
+    type: string
+    indexes:
+    - labelname: hrStorageDescr
+      type: Integer
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+  - name: hrStorageAllocationUnits
+    oid: 1.3.6.1.2.1.25.2.3.1.4
+    type: gauge
+    indexes:
+    - labelname: hrStorageDescr
+      type: Integer
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+  - name: hrStorageSize
+    oid: 1.3.6.1.2.1.25.2.3.1.5
+    type: gauge
+    indexes:
+    - labelname: hrStorageDescr
+      type: Integer
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+  - name: hrStorageUsed
+    oid: 1.3.6.1.2.1.25.2.3.1.6
+    type: gauge
+    indexes:
+    - labelname: hrStorageDescr
+      type: Integer
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+  - name: hrStorageAllocationFailures
+    oid: 1.3.6.1.2.1.25.2.3.1.7
+    type: counter
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrDeviceIndex
+    oid: 1.3.6.1.2.1.25.3.2.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceType
+    oid: 1.3.6.1.2.1.25.3.2.1.2
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceDescr
+    oid: 1.3.6.1.2.1.25.3.2.1.3
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceStatus
+    oid: 1.3.6.1.2.1.25.3.2.1.5
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceErrors
+    oid: 1.3.6.1.2.1.25.3.2.1.6
+    type: counter
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrProcessorLoad
+    oid: 1.3.6.1.2.1.25.3.3.1.2
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrNetworkIfIndex
+    oid: 1.3.6.1.2.1.25.3.4.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPrinterStatus
+    oid: 1.3.6.1.2.1.25.3.5.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPrinterDetectedErrorState
+    oid: 1.3.6.1.2.1.25.3.5.1.2
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageAccess
+    oid: 1.3.6.1.2.1.25.3.6.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageMedia
+    oid: 1.3.6.1.2.1.25.3.6.1.2
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageRemoveble
+    oid: 1.3.6.1.2.1.25.3.6.1.3
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageCapacity
+    oid: 1.3.6.1.2.1.25.3.6.1.4
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPartitionIndex
+    oid: 1.3.6.1.2.1.25.3.7.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionLabel
+    oid: 1.3.6.1.2.1.25.3.7.1.2
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionID
+    oid: 1.3.6.1.2.1.25.3.7.1.3
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionSize
+    oid: 1.3.6.1.2.1.25.3.7.1.4
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionFSIndex
+    oid: 1.3.6.1.2.1.25.3.7.1.5
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrFSIndex
+    oid: 1.3.6.1.2.1.25.3.8.1.1
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSMountPoint
+    oid: 1.3.6.1.2.1.25.3.8.1.2
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSRemoteMountPoint
+    oid: 1.3.6.1.2.1.25.3.8.1.3
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSAccess
+    oid: 1.3.6.1.2.1.25.3.8.1.5
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSBootable
+    oid: 1.3.6.1.2.1.25.3.8.1.6
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSStorageIndex
+    oid: 1.3.6.1.2.1.25.3.8.1.7
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+#  - name: hrFSLastFullBackupDate
+#    oid: 1.3.6.1.2.1.25.3.8.1.8
+#    type: string
+#    indexes:
+#    - labelname: hrFSIndex
+#      type: Integer
+#  - name: hrFSLastPartialBackupDate
+#    oid: 1.3.6.1.2.1.25.3.8.1.9
+#    type: string
+#    indexes:
+#    - labelname: hrFSIndex
+#      type: Integer
+  - name: ifName
+    oid: 1.3.6.1.2.1.31.1.1.1.1
+    type: string
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.2
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.3
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.4
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.5
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCInOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.6
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCInUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.7
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.8
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.9
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCOutOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.10
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCOutUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.11
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.12
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHCOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.13
+    type: counter
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifLinkUpDownTrapEnable
+    oid: 1.3.6.1.2.1.31.1.1.1.14
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifHighSpeed
+    oid: 1.3.6.1.2.1.31.1.1.1.15
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifPromiscuousMode
+    oid: 1.3.6.1.2.1.31.1.1.1.16
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifConnectorPresent
+    oid: 1.3.6.1.2.1.31.1.1.1.17
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifAlias
+    oid: 1.3.6.1.2.1.31.1.1.1.18
+    type: string
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: ifCounterDiscontinuityTime
+    oid: 1.3.6.1.2.1.31.1.1.1.19
+    type: gauge
+    indexes:
+    - labelname: ifDescr
+      type: Integer
+    lookups:
+    - labels:
+      - ifDescr
+      labelname: ifDescr
+      oid: 1.3.6.1.2.1.2.2.1.2
+  - name: laIndex
+    oid: 1.3.6.1.4.1.2021.10.1.1
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laNames
+    oid: 1.3.6.1.4.1.2021.10.1.2
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laLoad
+    oid: 1.3.6.1.4.1.2021.10.1.3
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laConfig
+    oid: 1.3.6.1.4.1.2021.10.1.4
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laLoadInt
+    oid: 1.3.6.1.4.1.2021.10.1.5
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laErrorFlag
+    oid: 1.3.6.1.4.1.2021.10.1.100
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laErrMessage
+    oid: 1.3.6.1.4.1.2021.10.1.101
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: ssIndex
+    oid: 1.3.6.1.4.1.2021.11.1
+    type: gauge
+  - name: ssErrorName
+    oid: 1.3.6.1.4.1.2021.11.2
+    type: string
+  - name: ssSwapIn
+    oid: 1.3.6.1.4.1.2021.11.3
+    type: gauge
+  - name: ssSwapOut
+    oid: 1.3.6.1.4.1.2021.11.4
+    type: gauge
+  - name: ssIOSent
+    oid: 1.3.6.1.4.1.2021.11.5
+    type: gauge
+  - name: ssIOReceive
+    oid: 1.3.6.1.4.1.2021.11.6
+    type: gauge
+  - name: ssSysInterrupts
+    oid: 1.3.6.1.4.1.2021.11.7
+    type: gauge
+  - name: ssSysContext
+    oid: 1.3.6.1.4.1.2021.11.8
+    type: gauge
+  - name: ssCpuUser
+    oid: 1.3.6.1.4.1.2021.11.9
+    type: gauge
+  - name: ssCpuSystem
+    oid: 1.3.6.1.4.1.2021.11.10
+    type: gauge
+  - name: ssCpuIdle
+    oid: 1.3.6.1.4.1.2021.11.11
+    type: gauge
+  - name: ssCpuRawUser
+    oid: 1.3.6.1.4.1.2021.11.50
+    type: counter
+  - name: ssCpuRawNice
+    oid: 1.3.6.1.4.1.2021.11.51
+    type: counter
+  - name: ssCpuRawSystem
+    oid: 1.3.6.1.4.1.2021.11.52
+    type: counter
+  - name: ssCpuRawIdle
+    oid: 1.3.6.1.4.1.2021.11.53
+    type: counter
+  - name: ssCpuRawWait
+    oid: 1.3.6.1.4.1.2021.11.54
+    type: counter
+  - name: ssCpuRawKernel
+    oid: 1.3.6.1.4.1.2021.11.55
+    type: counter
+  - name: ssCpuRawInterrupt
+    oid: 1.3.6.1.4.1.2021.11.56
+    type: counter
+  - name: ssIORawSent
+    oid: 1.3.6.1.4.1.2021.11.57
+    type: counter
+  - name: ssIORawReceived
+    oid: 1.3.6.1.4.1.2021.11.58
+    type: counter
+  - name: ssRawInterrupts
+    oid: 1.3.6.1.4.1.2021.11.59
+    type: counter
+  - name: ssRawContexts
+    oid: 1.3.6.1.4.1.2021.11.60
+    type: counter
+  - name: ssCpuRawSoftIRQ
+    oid: 1.3.6.1.4.1.2021.11.61
+    type: counter
+  - name: ssRawSwapIn
+    oid: 1.3.6.1.4.1.2021.11.62
+    type: counter
+  - name: ssRawSwapOut
+    oid: 1.3.6.1.4.1.2021.11.63
+    type: counter
+  - name: ssCpuRawSteal
+    oid: 1.3.6.1.4.1.2021.11.64
+    type: counter
+  - name: ssCpuRawGuest
+    oid: 1.3.6.1.4.1.2021.11.65
+    type: counter
+  - name: ssCpuRawGuestNice
+    oid: 1.3.6.1.4.1.2021.11.66
+    type: counter
+  - name: ssCpuNumCpus
+    oid: 1.3.6.1.4.1.2021.11.67
+    type: gauge
+  - name: lmTempSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.1
+    type: gauge
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmTempSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.2
+    type: string
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmTempSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.3
+    type: gauge
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmFanSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.1
+    type: gauge
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmFanSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.2
+    type: string
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmFanSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.3
+    type: gauge
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.1
+    type: gauge
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.2
+    type: string
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.3
+    type: gauge
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.1
+    type: gauge
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.2
+    type: string
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.3
+    type: gauge
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: diskIOIndex
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.1
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIODevice
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.2
+    type: string
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONRead
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.3
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONWritten
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.4
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOReads
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.5
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOWrites
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.6
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA1
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.9
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA5
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.10
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA15
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.11
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONReadX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.12
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONWrittenX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.13
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: ipFwAccIndex
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.1
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccViaName
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.6
+    type: string
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccProto
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.8
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccBidir
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.9
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccDir
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.10
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccBytes
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.11
+    type: counter
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPackets
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.12
+    type: counter
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccNrSrcPorts
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.13
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccNrDstPorts
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.14
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccSrcIsRange
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.15
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccDstIsRange
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.16
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort1
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.17
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort2
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.18
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort3
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.19
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort4
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.20
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort5
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.21
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort6
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.22
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort7
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.23
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort8
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.24
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort9
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.25
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort10
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.26
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipfInIndex
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfInRule
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.2
+    type: string
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfInHits
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.3
+    type: counter
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfOutIndex
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfOutRule
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.2
+    type: string
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfOutHits
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.3
+    type: counter
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfAccInIndex
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInRule
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.2
+    type: string
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInHits
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.3
+    type: counter
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInBytes
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.4
+    type: counter
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccOutIndex
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutRule
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.2
+    type: string
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutHits
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.3
+    type: counter
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutBytes
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.4
+    type: counter
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: dlmodNextIndex
+    oid: 1.3.6.1.4.1.2021.13.14.1
+    type: gauge
+  - name: dlmodIndex
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.1
+    type: gauge
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodName
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.2
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodPath
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.3
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodError
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.4
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodStatus
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.5
+    type: gauge
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: memIndex
+    oid: 1.3.6.1.4.1.2021.4.1
+    type: gauge
+  - name: memErrorName
+    oid: 1.3.6.1.4.1.2021.4.2
+    type: string
+  - name: memTotalSwap
+    oid: 1.3.6.1.4.1.2021.4.3
+    type: gauge
+  - name: memAvailSwap
+    oid: 1.3.6.1.4.1.2021.4.4
+    type: gauge
+  - name: memTotalReal
+    oid: 1.3.6.1.4.1.2021.4.5
+    type: gauge
+  - name: memAvailReal
+    oid: 1.3.6.1.4.1.2021.4.6
+    type: gauge
+  - name: memTotalSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.7
+    type: gauge
+  - name: memAvailSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.8
+    type: gauge
+  - name: memTotalRealTXT
+    oid: 1.3.6.1.4.1.2021.4.9
+    type: gauge
+  - name: memAvailRealTXT
+    oid: 1.3.6.1.4.1.2021.4.10
+    type: gauge
+  - name: memTotalFree
+    oid: 1.3.6.1.4.1.2021.4.11
+    type: gauge
+  - name: memMinimumSwap
+    oid: 1.3.6.1.4.1.2021.4.12
+    type: gauge
+  - name: memShared
+    oid: 1.3.6.1.4.1.2021.4.13
+    type: gauge
+  - name: memBuffer
+    oid: 1.3.6.1.4.1.2021.4.14
+    type: gauge
+  - name: memCached
+    oid: 1.3.6.1.4.1.2021.4.15
+    type: gauge
+  - name: memUsedSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.16
+    type: gauge
+  - name: memUsedRealTXT
+    oid: 1.3.6.1.4.1.2021.4.17
+    type: gauge
+  - name: memSwapError
+    oid: 1.3.6.1.4.1.2021.4.100
+    type: gauge
+  - name: memSwapErrorMsg
+    oid: 1.3.6.1.4.1.2021.4.101
+    type: string
+  - name: dskIndex
+    oid: 1.3.6.1.4.1.2021.9.1.1
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPath
+    oid: 1.3.6.1.4.1.2021.9.1.2
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskDevice
+    oid: 1.3.6.1.4.1.2021.9.1.3
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskMinimum
+    oid: 1.3.6.1.4.1.2021.9.1.4
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskMinPercent
+    oid: 1.3.6.1.4.1.2021.9.1.5
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotal
+    oid: 1.3.6.1.4.1.2021.9.1.6
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvail
+    oid: 1.3.6.1.4.1.2021.9.1.7
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsed
+    oid: 1.3.6.1.4.1.2021.9.1.8
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPercent
+    oid: 1.3.6.1.4.1.2021.9.1.9
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPercentNode
+    oid: 1.3.6.1.4.1.2021.9.1.10
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotalLow
+    oid: 1.3.6.1.4.1.2021.9.1.11
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotalHigh
+    oid: 1.3.6.1.4.1.2021.9.1.12
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvailLow
+    oid: 1.3.6.1.4.1.2021.9.1.13
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvailHigh
+    oid: 1.3.6.1.4.1.2021.9.1.14
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsedLow
+    oid: 1.3.6.1.4.1.2021.9.1.15
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsedHigh
+    oid: 1.3.6.1.4.1.2021.9.1.16
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskErrorFlag
+    oid: 1.3.6.1.4.1.2021.9.1.100
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskErrorMsg
+    oid: 1.3.6.1.4.1.2021.9.1.101
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+default_ifindex:
+  walk:
+  - 1.3.6.1.2.1.1.3
+  - 1.3.6.1.2.1.2
+  - 1.3.6.1.2.1.25.1
+  - 1.3.6.1.2.1.25.2
+  - 1.3.6.1.2.1.25.3
+  - 1.3.6.1.2.1.31.1.1
+  - 1.3.6.1.4.1.2021.10
+  - 1.3.6.1.4.1.2021.11
+  - 1.3.6.1.4.1.2021.13
+  - 1.3.6.1.4.1.2021.4
+  - 1.3.6.1.4.1.2021.9
+  metrics:
+  - name: sysUpTime
+    oid: 1.3.6.1.2.1.1.3
+    type: gauge
+  - name: ifNumber
+    oid: 1.3.6.1.2.1.2.1
+    type: gauge
+  - name: ifIndex
+    oid: 1.3.6.1.2.1.2.2.1.1
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifDescr
+    oid: 1.3.6.1.2.1.2.2.1.2
+    type: string
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifType
+    oid: 1.3.6.1.2.1.2.2.1.3
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifMtu
+    oid: 1.3.6.1.2.1.2.2.1.4
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifSpeed
+    oid: 1.3.6.1.2.1.2.2.1.5
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifAdminStatus
+    oid: 1.3.6.1.2.1.2.2.1.7
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOperStatus
+    oid: 1.3.6.1.2.1.2.2.1.8
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifLastChange
+    oid: 1.3.6.1.2.1.2.2.1.9
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInOctets
+    oid: 1.3.6.1.2.1.2.2.1.10
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.11
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.12
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInDiscards
+    oid: 1.3.6.1.2.1.2.2.1.13
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInErrors
+    oid: 1.3.6.1.2.1.2.2.1.14
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInUnknownProtos
+    oid: 1.3.6.1.2.1.2.2.1.15
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutOctets
+    oid: 1.3.6.1.2.1.2.2.1.16
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.17
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.18
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutDiscards
+    oid: 1.3.6.1.2.1.2.2.1.19
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutErrors
+    oid: 1.3.6.1.2.1.2.2.1.20
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutQLen
+    oid: 1.3.6.1.2.1.2.2.1.21
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: hrSystemUptime
+    oid: 1.3.6.1.2.1.25.1.1
+    type: gauge
+  - name: hrSystemDate
+    oid: 1.3.6.1.2.1.25.1.2
+    type: string
+  - name: hrSystemInitialLoadDevice
+    oid: 1.3.6.1.2.1.25.1.3
+    type: gauge
+  - name: hrSystemInitialLoadParameters
+    oid: 1.3.6.1.2.1.25.1.4
+    type: string
+  - name: hrSystemNumUsers
+    oid: 1.3.6.1.2.1.25.1.5
+    type: gauge
+  - name: hrSystemProcesses
+    oid: 1.3.6.1.2.1.25.1.6
+    type: gauge
+  - name: hrSystemMaxProcesses
+    oid: 1.3.6.1.2.1.25.1.7
+    type: gauge
+  - name: hrMemorySize
+    oid: 1.3.6.1.2.1.25.2.2
+    type: gauge
+  - name: hrStorageIndex
+    oid: 1.3.6.1.2.1.25.2.3.1.1
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageDescr
+    oid: 1.3.6.1.2.1.25.2.3.1.3
+    type: string
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageAllocationUnits
+    oid: 1.3.6.1.2.1.25.2.3.1.4
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageSize
+    oid: 1.3.6.1.2.1.25.2.3.1.5
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageUsed
+    oid: 1.3.6.1.2.1.25.2.3.1.6
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageAllocationFailures
+    oid: 1.3.6.1.2.1.25.2.3.1.7
+    type: counter
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrDeviceIndex
+    oid: 1.3.6.1.2.1.25.3.2.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceDescr
+    oid: 1.3.6.1.2.1.25.3.2.1.3
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceStatus
+    oid: 1.3.6.1.2.1.25.3.2.1.5
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceErrors
+    oid: 1.3.6.1.2.1.25.3.2.1.6
+    type: counter
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrProcessorLoad
+    oid: 1.3.6.1.2.1.25.3.3.1.2
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrNetworkIfIndex
+    oid: 1.3.6.1.2.1.25.3.4.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPrinterStatus
+    oid: 1.3.6.1.2.1.25.3.5.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPrinterDetectedErrorState
+    oid: 1.3.6.1.2.1.25.3.5.1.2
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageAccess
+    oid: 1.3.6.1.2.1.25.3.6.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageMedia
+    oid: 1.3.6.1.2.1.25.3.6.1.2
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageRemoveble
+    oid: 1.3.6.1.2.1.25.3.6.1.3
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageCapacity
+    oid: 1.3.6.1.2.1.25.3.6.1.4
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPartitionIndex
+    oid: 1.3.6.1.2.1.25.3.7.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionLabel
+    oid: 1.3.6.1.2.1.25.3.7.1.2
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionID
+    oid: 1.3.6.1.2.1.25.3.7.1.3
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionSize
+    oid: 1.3.6.1.2.1.25.3.7.1.4
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionFSIndex
+    oid: 1.3.6.1.2.1.25.3.7.1.5
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrFSIndex
+    oid: 1.3.6.1.2.1.25.3.8.1.1
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSMountPoint
+    oid: 1.3.6.1.2.1.25.3.8.1.2
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSRemoteMountPoint
+    oid: 1.3.6.1.2.1.25.3.8.1.3
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSAccess
+    oid: 1.3.6.1.2.1.25.3.8.1.5
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSBootable
+    oid: 1.3.6.1.2.1.25.3.8.1.6
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSStorageIndex
+    oid: 1.3.6.1.2.1.25.3.8.1.7
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSLastFullBackupDate
+    oid: 1.3.6.1.2.1.25.3.8.1.8
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSLastPartialBackupDate
+    oid: 1.3.6.1.2.1.25.3.8.1.9
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: ifName
+    oid: 1.3.6.1.2.1.31.1.1.1.1
+    type: string
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.2
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.3
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.4
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.5
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCInOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.6
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCInUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.7
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.8
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.9
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCOutOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.10
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCOutUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.11
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.12
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHCOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.13
+    type: counter
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifLinkUpDownTrapEnable
+    oid: 1.3.6.1.2.1.31.1.1.1.14
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifHighSpeed
+    oid: 1.3.6.1.2.1.31.1.1.1.15
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifPromiscuousMode
+    oid: 1.3.6.1.2.1.31.1.1.1.16
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifConnectorPresent
+    oid: 1.3.6.1.2.1.31.1.1.1.17
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifAlias
+    oid: 1.3.6.1.2.1.31.1.1.1.18
+    type: string
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: ifCounterDiscontinuityTime
+    oid: 1.3.6.1.2.1.31.1.1.1.19
+    type: gauge
+    indexes:
+    - labelname: ifIndex
+      type: Integer
+  - name: laIndex
+    oid: 1.3.6.1.4.1.2021.10.1.1
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laNames
+    oid: 1.3.6.1.4.1.2021.10.1.2
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laLoad
+    oid: 1.3.6.1.4.1.2021.10.1.3
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laConfig
+    oid: 1.3.6.1.4.1.2021.10.1.4
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laLoadInt
+    oid: 1.3.6.1.4.1.2021.10.1.5
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laErrorFlag
+    oid: 1.3.6.1.4.1.2021.10.1.100
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laErrMessage
+    oid: 1.3.6.1.4.1.2021.10.1.101
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: ssIndex
+    oid: 1.3.6.1.4.1.2021.11.1
+    type: gauge
+  - name: ssErrorName
+    oid: 1.3.6.1.4.1.2021.11.2
+    type: string
+  - name: ssSwapIn
+    oid: 1.3.6.1.4.1.2021.11.3
+    type: gauge
+  - name: ssSwapOut
+    oid: 1.3.6.1.4.1.2021.11.4
+    type: gauge
+  - name: ssIOSent
+    oid: 1.3.6.1.4.1.2021.11.5
+    type: gauge
+  - name: ssIOReceive
+    oid: 1.3.6.1.4.1.2021.11.6
+    type: gauge
+  - name: ssSysInterrupts
+    oid: 1.3.6.1.4.1.2021.11.7
+    type: gauge
+  - name: ssSysContext
+    oid: 1.3.6.1.4.1.2021.11.8
+    type: gauge
+  - name: ssCpuUser
+    oid: 1.3.6.1.4.1.2021.11.9
+    type: gauge
+  - name: ssCpuSystem
+    oid: 1.3.6.1.4.1.2021.11.10
+    type: gauge
+  - name: ssCpuIdle
+    oid: 1.3.6.1.4.1.2021.11.11
+    type: gauge
+  - name: ssCpuRawUser
+    oid: 1.3.6.1.4.1.2021.11.50
+    type: counter
+  - name: ssCpuRawNice
+    oid: 1.3.6.1.4.1.2021.11.51
+    type: counter
+  - name: ssCpuRawSystem
+    oid: 1.3.6.1.4.1.2021.11.52
+    type: counter
+  - name: ssCpuRawIdle
+    oid: 1.3.6.1.4.1.2021.11.53
+    type: counter
+  - name: ssCpuRawWait
+    oid: 1.3.6.1.4.1.2021.11.54
+    type: counter
+  - name: ssCpuRawKernel
+    oid: 1.3.6.1.4.1.2021.11.55
+    type: counter
+  - name: ssCpuRawInterrupt
+    oid: 1.3.6.1.4.1.2021.11.56
+    type: counter
+  - name: ssIORawSent
+    oid: 1.3.6.1.4.1.2021.11.57
+    type: counter
+  - name: ssIORawReceived
+    oid: 1.3.6.1.4.1.2021.11.58
+    type: counter
+  - name: ssRawInterrupts
+    oid: 1.3.6.1.4.1.2021.11.59
+    type: counter
+  - name: ssRawContexts
+    oid: 1.3.6.1.4.1.2021.11.60
+    type: counter
+  - name: ssCpuRawSoftIRQ
+    oid: 1.3.6.1.4.1.2021.11.61
+    type: counter
+  - name: ssRawSwapIn
+    oid: 1.3.6.1.4.1.2021.11.62
+    type: counter
+  - name: ssRawSwapOut
+    oid: 1.3.6.1.4.1.2021.11.63
+    type: counter
+  - name: ssCpuRawSteal
+    oid: 1.3.6.1.4.1.2021.11.64
+    type: counter
+  - name: ssCpuRawGuest
+    oid: 1.3.6.1.4.1.2021.11.65
+    type: counter
+  - name: ssCpuRawGuestNice
+    oid: 1.3.6.1.4.1.2021.11.66
+    type: counter
+  - name: ssCpuNumCpus
+    oid: 1.3.6.1.4.1.2021.11.67
+    type: gauge
+  - name: lmTempSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.1
+    type: gauge
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmTempSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.2
+    type: string
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmTempSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.3
+    type: gauge
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmFanSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.1
+    type: gauge
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmFanSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.2
+    type: string
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmFanSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.3
+    type: gauge
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.1
+    type: gauge
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.2
+    type: string
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.3
+    type: gauge
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.1
+    type: gauge
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.2
+    type: string
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.3
+    type: gauge
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: diskIOIndex
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.1
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIODevice
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.2
+    type: string
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONRead
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.3
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONWritten
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.4
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOReads
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.5
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOWrites
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.6
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA1
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.9
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA5
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.10
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA15
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.11
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONReadX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.12
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONWrittenX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.13
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: ipFwAccIndex
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.1
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccViaName
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.6
+    type: string
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccProto
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.8
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccBidir
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.9
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccDir
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.10
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccBytes
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.11
+    type: counter
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPackets
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.12
+    type: counter
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccNrSrcPorts
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.13
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccNrDstPorts
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.14
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccSrcIsRange
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.15
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccDstIsRange
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.16
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort1
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.17
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort2
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.18
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort3
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.19
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort4
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.20
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort5
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.21
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort6
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.22
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort7
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.23
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort8
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.24
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort9
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.25
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort10
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.26
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipfInIndex
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfInRule
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.2
+    type: string
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfInHits
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.3
+    type: counter
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfOutIndex
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfOutRule
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.2
+    type: string
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfOutHits
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.3
+    type: counter
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfAccInIndex
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInRule
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.2
+    type: string
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInHits
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.3
+    type: counter
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInBytes
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.4
+    type: counter
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccOutIndex
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutRule
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.2
+    type: string
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutHits
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.3
+    type: counter
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutBytes
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.4
+    type: counter
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: dlmodNextIndex
+    oid: 1.3.6.1.4.1.2021.13.14.1
+    type: gauge
+  - name: dlmodIndex
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.1
+    type: gauge
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodName
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.2
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodPath
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.3
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodError
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.4
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodStatus
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.5
+    type: gauge
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: memIndex
+    oid: 1.3.6.1.4.1.2021.4.1
+    type: gauge
+  - name: memErrorName
+    oid: 1.3.6.1.4.1.2021.4.2
+    type: string
+  - name: memTotalSwap
+    oid: 1.3.6.1.4.1.2021.4.3
+    type: gauge
+  - name: memAvailSwap
+    oid: 1.3.6.1.4.1.2021.4.4
+    type: gauge
+  - name: memTotalReal
+    oid: 1.3.6.1.4.1.2021.4.5
+    type: gauge
+  - name: memAvailReal
+    oid: 1.3.6.1.4.1.2021.4.6
+    type: gauge
+  - name: memTotalSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.7
+    type: gauge
+  - name: memAvailSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.8
+    type: gauge
+  - name: memTotalRealTXT
+    oid: 1.3.6.1.4.1.2021.4.9
+    type: gauge
+  - name: memAvailRealTXT
+    oid: 1.3.6.1.4.1.2021.4.10
+    type: gauge
+  - name: memTotalFree
+    oid: 1.3.6.1.4.1.2021.4.11
+    type: gauge
+  - name: memMinimumSwap
+    oid: 1.3.6.1.4.1.2021.4.12
+    type: gauge
+  - name: memShared
+    oid: 1.3.6.1.4.1.2021.4.13
+    type: gauge
+  - name: memBuffer
+    oid: 1.3.6.1.4.1.2021.4.14
+    type: gauge
+  - name: memCached
+    oid: 1.3.6.1.4.1.2021.4.15
+    type: gauge
+  - name: memUsedSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.16
+    type: gauge
+  - name: memUsedRealTXT
+    oid: 1.3.6.1.4.1.2021.4.17
+    type: gauge
+  - name: memSwapError
+    oid: 1.3.6.1.4.1.2021.4.100
+    type: gauge
+  - name: memSwapErrorMsg
+    oid: 1.3.6.1.4.1.2021.4.101
+    type: string
+  - name: dskIndex
+    oid: 1.3.6.1.4.1.2021.9.1.1
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPath
+    oid: 1.3.6.1.4.1.2021.9.1.2
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskDevice
+    oid: 1.3.6.1.4.1.2021.9.1.3
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskMinimum
+    oid: 1.3.6.1.4.1.2021.9.1.4
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskMinPercent
+    oid: 1.3.6.1.4.1.2021.9.1.5
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotal
+    oid: 1.3.6.1.4.1.2021.9.1.6
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvail
+    oid: 1.3.6.1.4.1.2021.9.1.7
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsed
+    oid: 1.3.6.1.4.1.2021.9.1.8
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPercent
+    oid: 1.3.6.1.4.1.2021.9.1.9
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPercentNode
+    oid: 1.3.6.1.4.1.2021.9.1.10
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotalLow
+    oid: 1.3.6.1.4.1.2021.9.1.11
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotalHigh
+    oid: 1.3.6.1.4.1.2021.9.1.12
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvailLow
+    oid: 1.3.6.1.4.1.2021.9.1.13
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvailHigh
+    oid: 1.3.6.1.4.1.2021.9.1.14
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsedLow
+    oid: 1.3.6.1.4.1.2021.9.1.15
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsedHigh
+    oid: 1.3.6.1.4.1.2021.9.1.16
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskErrorFlag
+    oid: 1.3.6.1.4.1.2021.9.1.100
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskErrorMsg
+    oid: 1.3.6.1.4.1.2021.9.1.101
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+default_ifname:
+  walk:
+  - 1.3.6.1.2.1.1.3
+  - 1.3.6.1.2.1.2
+  - 1.3.6.1.2.1.25.1
+  - 1.3.6.1.2.1.25.2
+  - 1.3.6.1.2.1.25.3
+  - 1.3.6.1.2.1.31.1.1
+  - 1.3.6.1.4.1.2021.10
+  - 1.3.6.1.4.1.2021.11
+  - 1.3.6.1.4.1.2021.13
+  - 1.3.6.1.4.1.2021.4
+  - 1.3.6.1.4.1.2021.9
+  metrics:
+  - name: sysUpTime
+    oid: 1.3.6.1.2.1.1.3
+    type: gauge
+  - name: ifNumber
+    oid: 1.3.6.1.2.1.2.1
+    type: gauge
+  - name: ifIndex
+    oid: 1.3.6.1.2.1.2.2.1.1
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifDescr
+    oid: 1.3.6.1.2.1.2.2.1.2
+    type: string
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifType
+    oid: 1.3.6.1.2.1.2.2.1.3
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifMtu
+    oid: 1.3.6.1.2.1.2.2.1.4
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifSpeed
+    oid: 1.3.6.1.2.1.2.2.1.5
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifAdminStatus
+    oid: 1.3.6.1.2.1.2.2.1.7
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOperStatus
+    oid: 1.3.6.1.2.1.2.2.1.8
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifLastChange
+    oid: 1.3.6.1.2.1.2.2.1.9
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInOctets
+    oid: 1.3.6.1.2.1.2.2.1.10
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.11
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.12
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInDiscards
+    oid: 1.3.6.1.2.1.2.2.1.13
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInErrors
+    oid: 1.3.6.1.2.1.2.2.1.14
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInUnknownProtos
+    oid: 1.3.6.1.2.1.2.2.1.15
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutOctets
+    oid: 1.3.6.1.2.1.2.2.1.16
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.17
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutNUcastPkts
+    oid: 1.3.6.1.2.1.2.2.1.18
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutDiscards
+    oid: 1.3.6.1.2.1.2.2.1.19
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutErrors
+    oid: 1.3.6.1.2.1.2.2.1.20
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutQLen
+    oid: 1.3.6.1.2.1.2.2.1.21
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: hrSystemUptime
+    oid: 1.3.6.1.2.1.25.1.1
+    type: gauge
+  - name: hrSystemDate
+    oid: 1.3.6.1.2.1.25.1.2
+    type: string
+  - name: hrSystemInitialLoadDevice
+    oid: 1.3.6.1.2.1.25.1.3
+    type: gauge
+  - name: hrSystemInitialLoadParameters
+    oid: 1.3.6.1.2.1.25.1.4
+    type: string
+  - name: hrSystemNumUsers
+    oid: 1.3.6.1.2.1.25.1.5
+    type: gauge
+  - name: hrSystemProcesses
+    oid: 1.3.6.1.2.1.25.1.6
+    type: gauge
+  - name: hrSystemMaxProcesses
+    oid: 1.3.6.1.2.1.25.1.7
+    type: gauge
+  - name: hrMemorySize
+    oid: 1.3.6.1.2.1.25.2.2
+    type: gauge
+  - name: hrStorageIndex
+    oid: 1.3.6.1.2.1.25.2.3.1.1
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageDescr
+    oid: 1.3.6.1.2.1.25.2.3.1.3
+    type: string
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageAllocationUnits
+    oid: 1.3.6.1.2.1.25.2.3.1.4
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageSize
+    oid: 1.3.6.1.2.1.25.2.3.1.5
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageUsed
+    oid: 1.3.6.1.2.1.25.2.3.1.6
+    type: gauge
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrStorageAllocationFailures
+    oid: 1.3.6.1.2.1.25.2.3.1.7
+    type: counter
+    indexes:
+    - labelname: hrStorageIndex
+      type: Integer
+  - name: hrDeviceIndex
+    oid: 1.3.6.1.2.1.25.3.2.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceDescr
+    oid: 1.3.6.1.2.1.25.3.2.1.3
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceStatus
+    oid: 1.3.6.1.2.1.25.3.2.1.5
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDeviceErrors
+    oid: 1.3.6.1.2.1.25.3.2.1.6
+    type: counter
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrProcessorLoad
+    oid: 1.3.6.1.2.1.25.3.3.1.2
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrNetworkIfIndex
+    oid: 1.3.6.1.2.1.25.3.4.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPrinterStatus
+    oid: 1.3.6.1.2.1.25.3.5.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPrinterDetectedErrorState
+    oid: 1.3.6.1.2.1.25.3.5.1.2
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageAccess
+    oid: 1.3.6.1.2.1.25.3.6.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageMedia
+    oid: 1.3.6.1.2.1.25.3.6.1.2
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageRemoveble
+    oid: 1.3.6.1.2.1.25.3.6.1.3
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrDiskStorageCapacity
+    oid: 1.3.6.1.2.1.25.3.6.1.4
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+  - name: hrPartitionIndex
+    oid: 1.3.6.1.2.1.25.3.7.1.1
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionLabel
+    oid: 1.3.6.1.2.1.25.3.7.1.2
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionID
+    oid: 1.3.6.1.2.1.25.3.7.1.3
+    type: string
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionSize
+    oid: 1.3.6.1.2.1.25.3.7.1.4
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrPartitionFSIndex
+    oid: 1.3.6.1.2.1.25.3.7.1.5
+    type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: Integer
+    - labelname: hrPartitionIndex
+      type: Integer
+  - name: hrFSIndex
+    oid: 1.3.6.1.2.1.25.3.8.1.1
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSMountPoint
+    oid: 1.3.6.1.2.1.25.3.8.1.2
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSRemoteMountPoint
+    oid: 1.3.6.1.2.1.25.3.8.1.3
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSAccess
+    oid: 1.3.6.1.2.1.25.3.8.1.5
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSBootable
+    oid: 1.3.6.1.2.1.25.3.8.1.6
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSStorageIndex
+    oid: 1.3.6.1.2.1.25.3.8.1.7
+    type: gauge
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSLastFullBackupDate
+    oid: 1.3.6.1.2.1.25.3.8.1.8
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: hrFSLastPartialBackupDate
+    oid: 1.3.6.1.2.1.25.3.8.1.9
+    type: string
+    indexes:
+    - labelname: hrFSIndex
+      type: Integer
+  - name: ifName
+    oid: 1.3.6.1.2.1.31.1.1.1.1
+    type: string
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.2
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.3
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.4
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.5
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCInOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.6
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCInUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.7
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCInMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.8
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCInBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.9
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCOutOctets
+    oid: 1.3.6.1.2.1.31.1.1.1.10
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCOutUcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.11
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCOutMulticastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.12
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHCOutBroadcastPkts
+    oid: 1.3.6.1.2.1.31.1.1.1.13
+    type: counter
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifLinkUpDownTrapEnable
+    oid: 1.3.6.1.2.1.31.1.1.1.14
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifHighSpeed
+    oid: 1.3.6.1.2.1.31.1.1.1.15
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifPromiscuousMode
+    oid: 1.3.6.1.2.1.31.1.1.1.16
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifConnectorPresent
+    oid: 1.3.6.1.2.1.31.1.1.1.17
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifAlias
+    oid: 1.3.6.1.2.1.31.1.1.1.18
+    type: string
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: ifCounterDiscontinuityTime
+    oid: 1.3.6.1.2.1.31.1.1.1.19
+    type: gauge
+    indexes:
+    - labelname: ifName
+      type: Integer
+    lookups:
+    - labels:
+      - ifName
+      labelname: ifName
+      oid: 1.3.6.1.2.1.31.1.1.1.1
+  - name: laIndex
+    oid: 1.3.6.1.4.1.2021.10.1.1
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laNames
+    oid: 1.3.6.1.4.1.2021.10.1.2
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laLoad
+    oid: 1.3.6.1.4.1.2021.10.1.3
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laConfig
+    oid: 1.3.6.1.4.1.2021.10.1.4
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laLoadInt
+    oid: 1.3.6.1.4.1.2021.10.1.5
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laErrorFlag
+    oid: 1.3.6.1.4.1.2021.10.1.100
+    type: gauge
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: laErrMessage
+    oid: 1.3.6.1.4.1.2021.10.1.101
+    type: string
+    indexes:
+    - labelname: laIndex
+      type: Integer
+  - name: ssIndex
+    oid: 1.3.6.1.4.1.2021.11.1
+    type: gauge
+  - name: ssErrorName
+    oid: 1.3.6.1.4.1.2021.11.2
+    type: string
+  - name: ssSwapIn
+    oid: 1.3.6.1.4.1.2021.11.3
+    type: gauge
+  - name: ssSwapOut
+    oid: 1.3.6.1.4.1.2021.11.4
+    type: gauge
+  - name: ssIOSent
+    oid: 1.3.6.1.4.1.2021.11.5
+    type: gauge
+  - name: ssIOReceive
+    oid: 1.3.6.1.4.1.2021.11.6
+    type: gauge
+  - name: ssSysInterrupts
+    oid: 1.3.6.1.4.1.2021.11.7
+    type: gauge
+  - name: ssSysContext
+    oid: 1.3.6.1.4.1.2021.11.8
+    type: gauge
+  - name: ssCpuUser
+    oid: 1.3.6.1.4.1.2021.11.9
+    type: gauge
+  - name: ssCpuSystem
+    oid: 1.3.6.1.4.1.2021.11.10
+    type: gauge
+  - name: ssCpuIdle
+    oid: 1.3.6.1.4.1.2021.11.11
+    type: gauge
+  - name: ssCpuRawUser
+    oid: 1.3.6.1.4.1.2021.11.50
+    type: counter
+  - name: ssCpuRawNice
+    oid: 1.3.6.1.4.1.2021.11.51
+    type: counter
+  - name: ssCpuRawSystem
+    oid: 1.3.6.1.4.1.2021.11.52
+    type: counter
+  - name: ssCpuRawIdle
+    oid: 1.3.6.1.4.1.2021.11.53
+    type: counter
+  - name: ssCpuRawWait
+    oid: 1.3.6.1.4.1.2021.11.54
+    type: counter
+  - name: ssCpuRawKernel
+    oid: 1.3.6.1.4.1.2021.11.55
+    type: counter
+  - name: ssCpuRawInterrupt
+    oid: 1.3.6.1.4.1.2021.11.56
+    type: counter
+  - name: ssIORawSent
+    oid: 1.3.6.1.4.1.2021.11.57
+    type: counter
+  - name: ssIORawReceived
+    oid: 1.3.6.1.4.1.2021.11.58
+    type: counter
+  - name: ssRawInterrupts
+    oid: 1.3.6.1.4.1.2021.11.59
+    type: counter
+  - name: ssRawContexts
+    oid: 1.3.6.1.4.1.2021.11.60
+    type: counter
+  - name: ssCpuRawSoftIRQ
+    oid: 1.3.6.1.4.1.2021.11.61
+    type: counter
+  - name: ssRawSwapIn
+    oid: 1.3.6.1.4.1.2021.11.62
+    type: counter
+  - name: ssRawSwapOut
+    oid: 1.3.6.1.4.1.2021.11.63
+    type: counter
+  - name: ssCpuRawSteal
+    oid: 1.3.6.1.4.1.2021.11.64
+    type: counter
+  - name: ssCpuRawGuest
+    oid: 1.3.6.1.4.1.2021.11.65
+    type: counter
+  - name: ssCpuRawGuestNice
+    oid: 1.3.6.1.4.1.2021.11.66
+    type: counter
+  - name: ssCpuNumCpus
+    oid: 1.3.6.1.4.1.2021.11.67
+    type: gauge
+  - name: lmTempSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.1
+    type: gauge
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmTempSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.2
+    type: string
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmTempSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.2.1.3
+    type: gauge
+    indexes:
+    - labelname: lmTempSensorsIndex
+      type: Integer
+  - name: lmFanSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.1
+    type: gauge
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmFanSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.2
+    type: string
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmFanSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.3.1.3
+    type: gauge
+    indexes:
+    - labelname: lmFanSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.1
+    type: gauge
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.2
+    type: string
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmVoltSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.4.1.3
+    type: gauge
+    indexes:
+    - labelname: lmVoltSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsIndex
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.1
+    type: gauge
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsDevice
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.2
+    type: string
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: lmMiscSensorsValue
+    oid: 1.3.6.1.4.1.2021.13.16.5.1.3
+    type: gauge
+    indexes:
+    - labelname: lmMiscSensorsIndex
+      type: Integer
+  - name: diskIOIndex
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.1
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIODevice
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.2
+    type: string
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONRead
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.3
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONWritten
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.4
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOReads
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.5
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOWrites
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.6
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA1
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.9
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA5
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.10
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIOLA15
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.11
+    type: gauge
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONReadX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.12
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: diskIONWrittenX
+    oid: 1.3.6.1.4.1.2021.13.15.1.1.13
+    type: counter
+    indexes:
+    - labelname: diskIOIndex
+      type: Integer
+  - name: ipFwAccIndex
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.1
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccViaName
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.6
+    type: string
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccProto
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.8
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccBidir
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.9
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccDir
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.10
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccBytes
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.11
+    type: counter
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPackets
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.12
+    type: counter
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccNrSrcPorts
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.13
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccNrDstPorts
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.14
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccSrcIsRange
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.15
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccDstIsRange
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.16
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort1
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.17
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort2
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.18
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort3
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.19
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort4
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.20
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort5
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.21
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort6
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.22
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort7
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.23
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort8
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.24
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort9
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.25
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipFwAccPort10
+    oid: 1.3.6.1.4.1.2021.13.1.1.1.26
+    type: gauge
+    indexes:
+    - labelname: ipFwAccIndex
+      type: Integer
+  - name: ipfInIndex
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfInRule
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.2
+    type: string
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfInHits
+    oid: 1.3.6.1.4.1.2021.13.2.1.1.3
+    type: counter
+    indexes:
+    - labelname: ipfInIndex
+      type: Integer
+  - name: ipfOutIndex
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfOutRule
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.2
+    type: string
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfOutHits
+    oid: 1.3.6.1.4.1.2021.13.2.2.1.3
+    type: counter
+    indexes:
+    - labelname: ipfOutIndex
+      type: Integer
+  - name: ipfAccInIndex
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInRule
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.2
+    type: string
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInHits
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.3
+    type: counter
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccInBytes
+    oid: 1.3.6.1.4.1.2021.13.2.3.1.4
+    type: counter
+    indexes:
+    - labelname: ipfAccInIndex
+      type: Integer
+  - name: ipfAccOutIndex
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.1
+    type: gauge
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutRule
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.2
+    type: string
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutHits
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.3
+    type: counter
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: ipfAccOutBytes
+    oid: 1.3.6.1.4.1.2021.13.2.4.1.4
+    type: counter
+    indexes:
+    - labelname: ipfAccOutIndex
+      type: Integer
+  - name: dlmodNextIndex
+    oid: 1.3.6.1.4.1.2021.13.14.1
+    type: gauge
+  - name: dlmodIndex
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.1
+    type: gauge
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodName
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.2
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodPath
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.3
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodError
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.4
+    type: string
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: dlmodStatus
+    oid: 1.3.6.1.4.1.2021.13.14.2.1.5
+    type: gauge
+    indexes:
+    - labelname: dlmodIndex
+      type: Integer
+  - name: memIndex
+    oid: 1.3.6.1.4.1.2021.4.1
+    type: gauge
+  - name: memErrorName
+    oid: 1.3.6.1.4.1.2021.4.2
+    type: string
+  - name: memTotalSwap
+    oid: 1.3.6.1.4.1.2021.4.3
+    type: gauge
+  - name: memAvailSwap
+    oid: 1.3.6.1.4.1.2021.4.4
+    type: gauge
+  - name: memTotalReal
+    oid: 1.3.6.1.4.1.2021.4.5
+    type: gauge
+  - name: memAvailReal
+    oid: 1.3.6.1.4.1.2021.4.6
+    type: gauge
+  - name: memTotalSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.7
+    type: gauge
+  - name: memAvailSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.8
+    type: gauge
+  - name: memTotalRealTXT
+    oid: 1.3.6.1.4.1.2021.4.9
+    type: gauge
+  - name: memAvailRealTXT
+    oid: 1.3.6.1.4.1.2021.4.10
+    type: gauge
+  - name: memTotalFree
+    oid: 1.3.6.1.4.1.2021.4.11
+    type: gauge
+  - name: memMinimumSwap
+    oid: 1.3.6.1.4.1.2021.4.12
+    type: gauge
+  - name: memShared
+    oid: 1.3.6.1.4.1.2021.4.13
+    type: gauge
+  - name: memBuffer
+    oid: 1.3.6.1.4.1.2021.4.14
+    type: gauge
+  - name: memCached
+    oid: 1.3.6.1.4.1.2021.4.15
+    type: gauge
+  - name: memUsedSwapTXT
+    oid: 1.3.6.1.4.1.2021.4.16
+    type: gauge
+  - name: memUsedRealTXT
+    oid: 1.3.6.1.4.1.2021.4.17
+    type: gauge
+  - name: memSwapError
+    oid: 1.3.6.1.4.1.2021.4.100
+    type: gauge
+  - name: memSwapErrorMsg
+    oid: 1.3.6.1.4.1.2021.4.101
+    type: string
+  - name: dskIndex
+    oid: 1.3.6.1.4.1.2021.9.1.1
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPath
+    oid: 1.3.6.1.4.1.2021.9.1.2
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskDevice
+    oid: 1.3.6.1.4.1.2021.9.1.3
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskMinimum
+    oid: 1.3.6.1.4.1.2021.9.1.4
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskMinPercent
+    oid: 1.3.6.1.4.1.2021.9.1.5
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotal
+    oid: 1.3.6.1.4.1.2021.9.1.6
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvail
+    oid: 1.3.6.1.4.1.2021.9.1.7
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsed
+    oid: 1.3.6.1.4.1.2021.9.1.8
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPercent
+    oid: 1.3.6.1.4.1.2021.9.1.9
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskPercentNode
+    oid: 1.3.6.1.4.1.2021.9.1.10
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotalLow
+    oid: 1.3.6.1.4.1.2021.9.1.11
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskTotalHigh
+    oid: 1.3.6.1.4.1.2021.9.1.12
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvailLow
+    oid: 1.3.6.1.4.1.2021.9.1.13
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskAvailHigh
+    oid: 1.3.6.1.4.1.2021.9.1.14
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsedLow
+    oid: 1.3.6.1.4.1.2021.9.1.15
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskUsedHigh
+    oid: 1.3.6.1.4.1.2021.9.1.16
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskErrorFlag
+    oid: 1.3.6.1.4.1.2021.9.1.100
+    type: gauge
+    indexes:
+    - labelname: dskIndex
+      type: Integer
+  - name: dskErrorMsg
+    oid: 1.3.6.1.4.1.2021.9.1.101
+    type: string
+    indexes:
+    - labelname: dskIndex
+      type: Integer

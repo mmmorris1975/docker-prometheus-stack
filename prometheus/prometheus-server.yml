@@ -1,0 +1,103 @@
+---
+global:
+  scrape_interval:     30s # Set the scrape interval to every 30 seconds. Default is every 1 minute.
+  evaluation_interval: 30s # Evaluate rules every 30 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  #external_labels:
+  #    monitor: 'codelab-monitor'
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first.rules"
+  # - "second.rules"
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 1m
+    static_configs:
+      - targets: ['localhost:9090']
+    metrics_path: /prometheus/metrics
+
+  - job_name: 'pushgateway'
+    scrape_interval: 1m
+    honor_labels: true
+    static_configs:
+      - targets: ['pushgateway:9091']
+
+  - job_name: 'cadvisor'
+    scrape_interval: 1m
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'host_metrics'
+    scrape_interval: 10s
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/file_sd/node_exporter.yml
+
+  - job_name: 'snmp'
+    scrape_interval: 10s
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/file_sd/router.yml
+    metrics_path: /snmp
+    params:
+      module: ['default']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: snmp_exporter:9116
+
+  - job_name: 'blackbox_ping'
+    scrape_interval: 6s
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/file_sd/router.yml
+        - /etc/prometheus/file_sd/isp.yml
+    metrics_path: /probe
+    params:
+      module: ['icmp']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+
+  - job_name: 'blackbox_dns'
+    scrape_interval: 6s
+    file_sd_configs:
+      - files:
+        - /etc/prometheus/file_sd/dns.yml
+    metrics_path: /probe
+    params:
+      module: ['dns_udp']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+
+  - job_name: 'blackbox_http'
+    scrape_interval: 6s
+    static_configs:
+      - targets: ['www.google.com']
+    metrics_path: /probe
+    params:
+      module: ['http_2xx']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
