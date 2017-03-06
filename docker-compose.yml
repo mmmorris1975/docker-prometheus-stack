@@ -3,6 +3,8 @@ version: "3"
 volumes:
   prometheus-data:
     driver: local
+  alertmanager-data:
+    driver: local
   grafana-data:
     driver: local
   grafana-logs:
@@ -85,8 +87,26 @@ services:
       - prometheus-data:/prometheus:rw
       - ./prometheus/prometheus-server.yml:/etc/prometheus/prometheus.yml:ro
       - ./prometheus/file_sd/:/etc/prometheus/file_sd/:ro
+      - ./prometheus/rules/:/etc/prometheus/rules/:ro
     healthcheck:
       test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9090/prometheus/graph']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  alertmanager:
+    image: armhf-prometheus-alertmanager:latest
+    container_name: alertmanager
+    networks:
+      - monitoring
+    command: [
+               "-web.external-url=http://localhost:9090/alertmanager/",
+               "-config.file=/etc/alertmanager/config.yml"
+             ]
+    volumes:
+      - alertmanager-data:/alertmanager:rw
+      - ./prometheus/alertmanager.yml:/etc/alertmanager/config.yml:ro
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9093/alertmanager/metrics']
       interval: 10s
       timeout: 5s
       retries: 3
