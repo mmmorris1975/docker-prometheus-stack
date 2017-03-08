@@ -10,20 +10,13 @@ volumes:
   grafana-logs:
     driver: local
 
-networks:
-  monitoring:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.31.0.0/24
-
 services:
   pushgateway:
     image: armhf-prometheus-pushgateway:latest
-    container_name: pushgateway
-    networks:
-      - monitoring
+# container_name not supported in swarm, networks is superfluous (we get one automatically as part of the stack)
+#    container_name: pushgateway
+#    networks:
+#      - monitoring
     healthcheck:
       test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9091/metrics']
       interval: 10s
@@ -31,9 +24,6 @@ services:
       retries: 3
   cadvisor:
     image: armhf-cadvisor:latest
-    container_name: cadvisor
-    networks:
-      - monitoring
     command: [ "-housekeeping_interval=5s", "-docker_only" ]
     volumes:
       - /:/rootfs:ro
@@ -45,13 +35,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-  blackbox_exporter:
+  blackbox-exporter:
     image: armhf-prometheus-blackbox_exporter:latest
-    container_name: blackbox_exporter
-    networks:
-      - monitoring
-    cap_add:
-      - NET_RAW
+# cap_add not supported in swarm, wonder if that breaks blackbox pings?
+#    cap_add:
+#      - NET_RAW
     volumes:
       - ./prometheus/blackbox_exporter_config.yml:/etc/blackbox_exporter/config.yml:ro
     healthcheck:
@@ -59,11 +47,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-  snmp_exporter:
+  snmp-exporter:
     image: armhf-prometheus-snmp_exporter:latest
-    container_name: snmp_exporter
-    networks:
-      - monitoring
     volumes:
       - ./prometheus/snmp_exporter_config.yml:/etc/snmp_exporter/config.yml:ro
     healthcheck:
@@ -71,17 +56,15 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-  prometheus_server:
+  prometheus-server:
     image: armhf-prometheus-server:latest
-    container_name: prometheus
-    networks:
-      - monitoring
     command: [
                "-config.file=/etc/prometheus/prometheus.yml",
                "-storage.local.path=/prometheus",
                "-web.external-url=http://localhost:9090/prometheus/",
                "-web.console.libraries=/usr/share/prometheus/console_libraries",
-               "-web.console.templates=/usr/share/prometheus/consoles"
+               "-web.console.templates=/usr/share/prometheus/consoles",
+               "-alertmanager.url=http://alertmanager:9093/alertmanager"
              ]
     volumes:
       - prometheus-data:/prometheus:rw
@@ -95,9 +78,6 @@ services:
       retries: 3
   alertmanager:
     image: armhf-prometheus-alertmanager:latest
-    container_name: alertmanager
-    networks:
-      - monitoring
     command: [
                "-web.external-url=http://localhost:9090/alertmanager/",
                "-config.file=/etc/alertmanager/config.yml"
@@ -112,9 +92,6 @@ services:
       retries: 3
   nginx:
     image: armhf-nginx
-    container_name: nginx
-    networks:
-      - monitoring
     volumes:
       - ./nginx/default.d/:/etc/nginx/default.d/:ro
       - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
@@ -129,9 +106,6 @@ services:
       retries: 3
   grafana:
     image: fg2it/grafana-armhf:v4.1.2
-    container_name: grafana
-    networks:
-      - monitoring
     volumes:
       - grafana-data:/var/lib/grafana:rw
       - grafana-logs:/var/log/grafana:rw
