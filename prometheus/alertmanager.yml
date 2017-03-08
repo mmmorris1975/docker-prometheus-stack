@@ -1,4 +1,6 @@
 global:
+  resolve_timeout: 1d
+
   # The smarthost and SMTP sender used for mail notifications.
   smtp_smarthost: 'localhost:25'
   smtp_from: 'alertmanager@example.org'
@@ -33,10 +35,10 @@ route:
 
   # If an alert has successfully been sent, wait 'repeat_interval' to
   # resend them.
-  repeat_interval: 3h 
+  repeat_interval: 1m
 
   # A default receiver
-  receiver: team-X-mails
+  receiver: alertmgr-webhook
 
   # All the above attributes are inherited by all child routes and can 
   # overwritten on each.
@@ -121,3 +123,6 @@ receivers:
     room_id: 85
     message_format: html
     notify: true
+- name: 'alertmgr-webhook'
+  webhook_configs:
+  - url: http://172.31.0.1:5000/prom-alert-handler
