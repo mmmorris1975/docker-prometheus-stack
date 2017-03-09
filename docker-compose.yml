@@ -110,3 +110,11 @@ services:
       - grafana-data:/var/lib/grafana:rw
       - grafana-logs:/var/log/grafana:rw
       - ./grafana/:/etc/grafana/:rw
+  speedtest-pusher:
+    image: armhf-prometheus-speedtest-pusher
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: none
+    environment:
+      - PUSH_GW=pushgateway:9091
