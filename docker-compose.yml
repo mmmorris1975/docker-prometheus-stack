@@ -65,7 +65,7 @@ services:
                "-web.console.libraries=/usr/share/prometheus/console_libraries",
                "-web.console.templates=/usr/share/prometheus/consoles",
                "-alertmanager.url=http://alertmanager:9093/alertmanager",
-               "-storage.local.memory-chunks=250000"
+               "-storage.local.target-heap-size=419430400"
              ]
     volumes:
       - prometheus-data:/prometheus:rw
