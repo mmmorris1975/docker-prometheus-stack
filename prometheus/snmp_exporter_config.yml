@@ -2,7 +2,9 @@ default:
   walk:
   - 1.3.6.1.2.1.1.3
   - 1.3.6.1.2.1.2
-  - 1.3.6.1.2.1.25
+  - 1.3.6.1.2.1.25.1
+  - 1.3.6.1.2.1.25.2
+  - 1.3.6.1.2.1.25.3
   - 1.3.6.1.2.1.31.1.1
   - 1.3.6.1.4.1.2021
   metrics:
@@ -292,41 +294,83 @@ default:
     oid: 1.3.6.1.2.1.25.2.3.1.1
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageDescr
     oid: 1.3.6.1.2.1.25.2.3.1.3
     type: DisplayString
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageAllocationUnits
     oid: 1.3.6.1.2.1.25.2.3.1.4
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageSize
     oid: 1.3.6.1.2.1.25.2.3.1.5
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageUsed
     oid: 1.3.6.1.2.1.25.2.3.1.6
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageAllocationFailures
     oid: 1.3.6.1.2.1.25.2.3.1.7
     type: counter
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrDeviceIndex
     oid: 1.3.6.1.2.1.25.3.2.1.1
     type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: gauge
+  - name: hrDeviceType
+    oid: 1.3.6.1.2.1.25.3.2.1.2
+    type: DisplayString
     indexes:
     - labelname: hrDeviceIndex
       type: gauge
@@ -483,87 +527,6 @@ default:
     type: OctetString
     indexes:
     - labelname: hrFSIndex
-      type: gauge
-  - name: hrSWOSIndex
-    oid: 1.3.6.1.2.1.25.4.1
-    type: gauge
-  - name: hrSWRunIndex
-    oid: 1.3.6.1.2.1.25.4.2.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunName
-    oid: 1.3.6.1.2.1.25.4.2.1.2
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPath
-    oid: 1.3.6.1.2.1.25.4.2.1.4
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunParameters
-    oid: 1.3.6.1.2.1.25.4.2.1.5
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunType
-    oid: 1.3.6.1.2.1.25.4.2.1.6
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunStatus
-    oid: 1.3.6.1.2.1.25.4.2.1.7
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPerfCPU
-    oid: 1.3.6.1.2.1.25.5.1.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPerfMem
-    oid: 1.3.6.1.2.1.25.5.1.1.2
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWInstalledLastChange
-    oid: 1.3.6.1.2.1.25.6.1
-    type: gauge
-  - name: hrSWInstalledLastUpdateTime
-    oid: 1.3.6.1.2.1.25.6.2
-    type: gauge
-  - name: hrSWInstalledIndex
-    oid: 1.3.6.1.2.1.25.6.3.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledName
-    oid: 1.3.6.1.2.1.25.6.3.1.2
-    type: OctetString
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledType
-    oid: 1.3.6.1.2.1.25.6.3.1.4
-    type: gauge
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledDate
-    oid: 1.3.6.1.2.1.25.6.3.1.5
-    type: OctetString
-    indexes:
-    - labelname: hrSWInstalledIndex
       type: gauge
   - name: ifName
     oid: 1.3.6.1.2.1.31.1.1.1.1
@@ -1994,7 +1957,9 @@ default_ifindex:
   walk:
   - 1.3.6.1.2.1.1.3
   - 1.3.6.1.2.1.2
-  - 1.3.6.1.2.1.25
+  - 1.3.6.1.2.1.25.1
+  - 1.3.6.1.2.1.25.2
+  - 1.3.6.1.2.1.25.3
   - 1.3.6.1.2.1.31.1.1
   - 1.3.6.1.4.1.2021
   metrics:
@@ -2158,41 +2123,83 @@ default_ifindex:
     oid: 1.3.6.1.2.1.25.2.3.1.1
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageDescr
     oid: 1.3.6.1.2.1.25.2.3.1.3
     type: DisplayString
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageAllocationUnits
     oid: 1.3.6.1.2.1.25.2.3.1.4
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageSize
     oid: 1.3.6.1.2.1.25.2.3.1.5
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageUsed
     oid: 1.3.6.1.2.1.25.2.3.1.6
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageAllocationFailures
     oid: 1.3.6.1.2.1.25.2.3.1.7
     type: counter
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrDeviceIndex
     oid: 1.3.6.1.2.1.25.3.2.1.1
     type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: gauge
+  - name: hrDeviceType
+    oid: 1.3.6.1.2.1.25.3.2.1.2
+    type: DisplayString
     indexes:
     - labelname: hrDeviceIndex
       type: gauge
@@ -2349,87 +2356,6 @@ default_ifindex:
     type: OctetString
     indexes:
     - labelname: hrFSIndex
-      type: gauge
-  - name: hrSWOSIndex
-    oid: 1.3.6.1.2.1.25.4.1
-    type: gauge
-  - name: hrSWRunIndex
-    oid: 1.3.6.1.2.1.25.4.2.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunName
-    oid: 1.3.6.1.2.1.25.4.2.1.2
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPath
-    oid: 1.3.6.1.2.1.25.4.2.1.4
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunParameters
-    oid: 1.3.6.1.2.1.25.4.2.1.5
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunType
-    oid: 1.3.6.1.2.1.25.4.2.1.6
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunStatus
-    oid: 1.3.6.1.2.1.25.4.2.1.7
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPerfCPU
-    oid: 1.3.6.1.2.1.25.5.1.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPerfMem
-    oid: 1.3.6.1.2.1.25.5.1.1.2
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWInstalledLastChange
-    oid: 1.3.6.1.2.1.25.6.1
-    type: gauge
-  - name: hrSWInstalledLastUpdateTime
-    oid: 1.3.6.1.2.1.25.6.2
-    type: gauge
-  - name: hrSWInstalledIndex
-    oid: 1.3.6.1.2.1.25.6.3.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledName
-    oid: 1.3.6.1.2.1.25.6.3.1.2
-    type: OctetString
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledType
-    oid: 1.3.6.1.2.1.25.6.3.1.4
-    type: gauge
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledDate
-    oid: 1.3.6.1.2.1.25.6.3.1.5
-    type: OctetString
-    indexes:
-    - labelname: hrSWInstalledIndex
       type: gauge
   - name: ifName
     oid: 1.3.6.1.2.1.31.1.1.1.1
@@ -3746,7 +3672,9 @@ default_ifname:
   walk:
   - 1.3.6.1.2.1.1.3
   - 1.3.6.1.2.1.2
-  - 1.3.6.1.2.1.25
+  - 1.3.6.1.2.1.25.1
+  - 1.3.6.1.2.1.25.2
+  - 1.3.6.1.2.1.25.3
   - 1.3.6.1.2.1.31.1.1
   - 1.3.6.1.4.1.2021
   metrics:
@@ -4036,41 +3964,83 @@ default_ifname:
     oid: 1.3.6.1.2.1.25.2.3.1.1
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageDescr
     oid: 1.3.6.1.2.1.25.2.3.1.3
     type: DisplayString
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageAllocationUnits
     oid: 1.3.6.1.2.1.25.2.3.1.4
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageSize
     oid: 1.3.6.1.2.1.25.2.3.1.5
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageUsed
     oid: 1.3.6.1.2.1.25.2.3.1.6
     type: gauge
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrStorageAllocationFailures
     oid: 1.3.6.1.2.1.25.2.3.1.7
     type: counter
     indexes:
-    - labelname: hrStorageIndex
+    - labelname: hrStorageDescr
       type: gauge
+    lookups:
+    - labels:
+      - hrStorageDescr
+      labelname: hrStorageDescr
+      oid: 1.3.6.1.2.1.25.2.3.1.3
+      type: DisplayString
   - name: hrDeviceIndex
     oid: 1.3.6.1.2.1.25.3.2.1.1
     type: gauge
+    indexes:
+    - labelname: hrDeviceIndex
+      type: gauge
+  - name: hrDeviceType
+    oid: 1.3.6.1.2.1.25.3.2.1.2
+    type: DisplayString
     indexes:
     - labelname: hrDeviceIndex
       type: gauge
@@ -4227,87 +4197,6 @@ default_ifname:
     type: OctetString
     indexes:
     - labelname: hrFSIndex
-      type: gauge
-  - name: hrSWOSIndex
-    oid: 1.3.6.1.2.1.25.4.1
-    type: gauge
-  - name: hrSWRunIndex
-    oid: 1.3.6.1.2.1.25.4.2.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunName
-    oid: 1.3.6.1.2.1.25.4.2.1.2
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPath
-    oid: 1.3.6.1.2.1.25.4.2.1.4
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunParameters
-    oid: 1.3.6.1.2.1.25.4.2.1.5
-    type: OctetString
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunType
-    oid: 1.3.6.1.2.1.25.4.2.1.6
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunStatus
-    oid: 1.3.6.1.2.1.25.4.2.1.7
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPerfCPU
-    oid: 1.3.6.1.2.1.25.5.1.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWRunPerfMem
-    oid: 1.3.6.1.2.1.25.5.1.1.2
-    type: gauge
-    indexes:
-    - labelname: hrSWRunIndex
-      type: gauge
-  - name: hrSWInstalledLastChange
-    oid: 1.3.6.1.2.1.25.6.1
-    type: gauge
-  - name: hrSWInstalledLastUpdateTime
-    oid: 1.3.6.1.2.1.25.6.2
-    type: gauge
-  - name: hrSWInstalledIndex
-    oid: 1.3.6.1.2.1.25.6.3.1.1
-    type: gauge
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledName
-    oid: 1.3.6.1.2.1.25.6.3.1.2
-    type: OctetString
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledType
-    oid: 1.3.6.1.2.1.25.6.3.1.4
-    type: gauge
-    indexes:
-    - labelname: hrSWInstalledIndex
-      type: gauge
-  - name: hrSWInstalledDate
-    oid: 1.3.6.1.2.1.25.6.3.1.5
-    type: OctetString
-    indexes:
-    - labelname: hrSWInstalledIndex
       type: gauge
   - name: ifName
     oid: 1.3.6.1.2.1.31.1.1.1.1
