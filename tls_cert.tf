@@ -1,6 +1,6 @@
 variable "key_algo" { default = "ECDSA" }
 variable "rsa_bits" { default = 4096 }
-variable "ecdsa_curve" { default = "P521" }
+variable "ecdsa_curve" { default = "P384" }
 variable "key_file" { default = "" }
 variable "cert_lifetime" { default = 43830 }
 
