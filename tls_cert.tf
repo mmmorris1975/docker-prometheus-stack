@@ -1,12 +1,13 @@
-variable "key_algo" { default = "RSA" }
+variable "key_algo" { default = "ECDSA" }
 variable "rsa_bits" { default = 4096 }
-variable "ecdsa_curve" { default = "P384" }
+variable "ecdsa_curve" { default = "P521" }
 variable "key_file" { default = "" }
 variable "cert_lifetime" { default = 43830 }
 
 resource "tls_private_key" "priv_key" {
   algorithm = "${var.key_algo}"
   rsa_bits  = "${var.rsa_bits}"
+  ecdsa_curve = "${var.ecdsa_curve}"
 }
 
 resource "tls_self_signed_cert" "tls_cert" {
