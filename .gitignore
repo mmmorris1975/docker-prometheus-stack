@@ -1,3 +1,6 @@
 nginx/htpasswd
 nginx/server.*
 prometheus/file_sd/*
+
+.terraform/
+terraform.tfstate*
