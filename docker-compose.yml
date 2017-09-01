@@ -1,38 +1,6 @@
-version: "3.1"
-
-volumes:
-  alertmanager-data:
-    driver: local
-  grafana-data:
-    driver: local
-  grafana-logs:
-    driver: local
+version: "3.2"
 
 services:
-  pushgateway:
-    image: armhf-prometheus-pushgateway:latest
-# container_name not supported in swarm, networks is superfluous (we get one automatically as part of the stack)
-#    container_name: pushgateway
-#    networks:
-#      - monitoring
-    healthcheck:
-      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9091/metrics']
-      interval: 10s
-      timeout: 5s
-      retries: 3
-#  cadvisor:
-#    image: armhf-cadvisor:latest
-#    command: [ "-housekeeping_interval=5s", "-docker_only" ]
-#    volumes:
-#      - /:/rootfs:ro
-#      - /sys:/sys:ro
-#      - /var/lib/docker/:/var/lib/docker:ro
-#      - /var/run:/var/run:rw
-#    healthcheck:
-#      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:8080/metrics']
-#      interval: 10s
-#      timeout: 5s
-#      retries: 3
   blackbox-exporter:
     image: armhf-prometheus-blackbox_exporter:latest
 # cap_add not supported in swarm, wonder if that breaks blackbox pings?
@@ -40,6 +8,11 @@ services:
 #      - NET_RAW
     volumes:
       - ./prometheus/blackbox_exporter_config.yml:/etc/blackbox_exporter/config.yml:ro
+    ports:
+      - target: 9115
+        published: 9115
+        protocol: tcp
+        mode: host
     healthcheck:
       test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9115/metrics']
       interval: 10s
@@ -49,48 +22,16 @@ services:
     image: armhf-prometheus-snmp_exporter:latest
     volumes:
       - ./prometheus/snmp_exporter_config.yml:/etc/snmp_exporter/config.yml:ro
+    ports:
+      - target: 9116
+        published: 9116
+        protocol: tcp
+        mode: host
     healthcheck:
       test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9116/metrics']
       interval: 10s
       timeout: 5s
       retries: 3
-  prometheus-server:
-    image: armhf-prometheus-server:latest
-    command: [
-               "-config.file=/etc/prometheus/prometheus.yml",
-               "-storage.local.path=/prometheus",
-               "-web.external-url=http://localhost:9090/prometheus/",
-               "-web.console.libraries=/usr/share/prometheus/console_libraries",
-               "-web.console.templates=/usr/share/prometheus/consoles",
-               "-alertmanager.url=http://alertmanager:9093/alertmanager",
-               "-storage.local.target-heap-size=419430400"
-             ]
-    volumes:
-      - /data/prometheus:/prometheus:rw
-      - ./prometheus/prometheus-server.yml:/etc/prometheus/prometheus.yml:ro
-      - ./prometheus/file_sd/:/etc/prometheus/file_sd/:ro
-      - ./prometheus/rules/:/etc/prometheus/rules/:ro
-    healthcheck:
-      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9090/prometheus/graph']
-      interval: 10s
-      timeout: 5s
-      retries: 3
-#      start_period: 10m
-    stop_grace_period: 1m
-#  alertmanager:
-#    image: armhf-prometheus-alertmanager:latest
-#    command: [
-#               "-web.external-url=http://localhost:9090/alertmanager/",
-#               "-config.file=/etc/alertmanager/config.yml"
-#             ]
-#    volumes:
-#      - alertmanager-data:/alertmanager:rw
-#      - ./prometheus/alertmanager.yml:/etc/alertmanager/config.yml:ro
-#    healthcheck:
-#      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost:9093/alertmanager/metrics']
-#      interval: 10s
-#      timeout: 5s
-#      retries: 3
   nginx:
     image: armhf-nginx
     volumes:
@@ -99,18 +40,20 @@ services:
       - ./nginx/htpasswd:/htpasswd:ro
       - ./nginx/server.key:/server.key:ro
       - ./nginx/server.crt:/server.crt:ro
-    ports: ['80:80', '443:443']
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
+      - target: 443
+        published: 443
+        protocol: tcp
+        mode: host
     healthcheck:
       test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://localhost/']
       interval: 10s
       timeout: 5s
       retries: 3
-  grafana:
-    image: fg2it/grafana-armhf:v4.3.2
-    volumes:
-      - grafana-data:/var/lib/grafana:rw
-      - grafana-logs:/var/log/grafana:rw
-      - ./grafana/:/etc/grafana/:rw
   speedtest-pusher:
     image: armhf-prometheus-speedtest-pusher
     deploy:
@@ -118,4 +61,4 @@ services:
       restart_policy:
         condition: none
     environment:
-      - PUSH_GW=pushgateway:9091
+      - PUSH_GW=mac-mini:9091
