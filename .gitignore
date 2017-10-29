@@ -4,3 +4,4 @@ prometheus/file_sd/*
 
 .terraform/
 terraform.tfstate*
+server.*
