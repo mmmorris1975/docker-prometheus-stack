@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   blackbox-exporter:
-    image: armhf-prometheus-blackbox_exporter:latest
+    image: armhf-prometheus-blackbox_exporter:0.10.0
 # cap_add not supported in swarm, wonder if that breaks blackbox pings?
 #    cap_add:
 #      - NET_RAW
@@ -19,7 +19,7 @@ services:
       timeout: 5s
       retries: 3
   snmp-exporter:
-    image: armhf-prometheus-snmp_exporter:latest
+    image: armhf-prometheus-snmp_exporter:0.7.0
     volumes:
       - ./prometheus/snmp_exporter_config.yml:/etc/snmp_exporter/config.yml:ro
     ports:
@@ -33,7 +33,7 @@ services:
       timeout: 5s
       retries: 3
   nginx:
-    image: armhf-nginx
+    image: armhf-nginx:20171003
     volumes:
       - ./nginx/default.d/:/etc/nginx/default.d/:ro
       - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
@@ -62,3 +62,24 @@ services:
         condition: none
     environment:
       - PUSH_GW=mac-mini:9091
+  prometheus-server:
+    image: armhf-prometheus-server:1.8.1
+    ports:
+      - target: 9090
+        published: 9090
+        protocol: tcp
+        mode: ingress
+    command: [
+               "-config.file=/etc/prometheus/prometheus.yml",
+               "-storage.local.path=/prometheus",
+               "-web.external-url=http://localhost:9090/prometheus/",
+               "-web.console.libraries=/usr/share/prometheus/console_libraries",
+               "-web.console.templates=/usr/share/prometheus/consoles",
+               "-alertmanager.url=http://mac-mini:9093/alertmanager",
+             ]
+    volumes:
+      - /data/prometheus:/prometheus:rw
+      - ./prometheus/prometheus-server.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/file_sd/:/etc/prometheus/file_sd/:ro
+      - ./prometheus/rules/:/etc/prometheus/rules/:ro
+#    healthcheck: (moved inside container so we can use start-period setting)
