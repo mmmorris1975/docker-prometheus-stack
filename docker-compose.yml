@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   blackbox-exporter:
-    image: mac-mini:5000/armhf-prometheus-blackbox_exporter:0.10.0
+    image: mac-mini:5000/armhf-prometheus-blackbox_exporter:0.11.0
 # cap_add not supported in swarm, wonder if that breaks blackbox pings?
 #    cap_add:
 #      - NET_RAW
@@ -83,4 +83,6 @@ services:
       - ./prometheus/prometheus-server.yml:/etc/prometheus/prometheus.yml:ro
       - ./prometheus/file_sd/:/etc/prometheus/file_sd/:ro
       - ./prometheus/rules/:/etc/prometheus/rules/:ro
+    stop_grace_period: 1m
+    stop_signal: SIGTERM
 #    healthcheck: (moved inside container so we can use start-period setting)
